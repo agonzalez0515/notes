@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default ({ reference }) => {
+  let content = reference.childMdx.excerpt.toLowerCase()
+  let body = content
+
+  if (content.includes(reference.title)) {
+    body = content.replace(reference.title, '')
+  } 
+  
   return (
     <div
       style={{
@@ -10,8 +17,8 @@ export default ({ reference }) => {
         borderRadius: 8,
       }}
     > 
-      <h2>{reference.title}</h2>
-      <p>{reference.childMdx.excerpt}</p>
+      <h3>{reference.title}</h3>
+      <p>{body}</p>
     </div>
   );
 };
